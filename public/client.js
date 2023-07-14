@@ -1,76 +1,98 @@
 $(document).ready(function () {
-  document
-    .getElementById("templateContainer")
-    .addEventListener("submit", function (event) {
-      if (event.target.matches("#submitForm")) {
-        event.preventDefault();
+  // document
+  //   .getElementById("templateContainer")
+  //   .addEventListener("submit", function (event) {
+  //     if (event.target.matches("#submitForm")) {
+  //       event.preventDefault();
 
-        var formData = {};
-        var formElements = document.getElementById("submitForm").elements;
+  //       var formData = {};
+  //       var formElements = document.getElementById("submitForm").elements;
 
-        for (var i = 0; i < formElements.length; i++) {
-          var element = formElements[i];
-          var elementName = element.name;
-          var elementValue = element.value;
+  //       for (var i = 0; i < formElements.length; i++) {
+  //         var element = formElements[i];
+  //         var elementName = element.name;
+  //         var elementValue = element.value;
     
-          if (elementName) {
-            formData[elementName] = elementValue;
-          }
-        }
+  //         if (elementName) {
+  //           formData[elementName] = elementValue;
+  //         }
+  //       }
+  //       console.log(formData);
+  //       // const url = "/oAuth";
 
-        // const url = "/oAuth";
+  //       // fetch(url, {
+  //       //   method: "POST",
+  //       //   headers: {
+  //       //     "Content-Type.oauth_signatureplication/json",
+  //       //   },
+  //       //   body: JSON.stringify(formData),
+  //       // })
+  //       //   .then((response) => response.json())
+  //       //   .then((data) => {
+  //       //     console.log("Server response:", data);
+  //       //   })
+  //       //   .catch((error) => {
+  //       //     console.error("Error:", error);
+  //       //   });
 
-        // fetch(url, {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type.oauth_signatureplication/json",
-        //   },
-        //   body: JSON.stringify(formData),
-        // })
-        //   .then((response) => response.json())
-        //   .then((data) => {
-        //     console.log("Server response:", data);
-        //   })
-        //   .catch((error) => {
-        //     console.error("Error:", error);
-        //   });
+  //       const urlSearchParams = new URLSearchParams();
+  //       for (const key in formData) {
+  //         urlSearchParams.append(key, formData[key]);
+  //       }
 
-        const urlSearchParams = new URLSearchParams();
-        for (const key in formData) {
-          urlSearchParams.append(key, formData[key]);
-        }
-
-        fetch("http://localhost:8080/oAuth", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: urlSearchParams.toString(),
-        })
-          .then((response) => response.text())
-          .then((data) => {
-            console.log("Server response:", data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      }
-    });
+  //       fetch("http://localhost:8080/oAuth", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/x-www-form-urlencoded",
+  //         },
+  //         body: urlSearchParams.toString(),
+  //       })
+  //         .then((response) => response.text())
+  //         .then((data) => {
+  //           console.log("Server response:", data);
+  //         })
+  //         .catch((error) => {
+  //           console.error("Error:", error);
+  //         });
+  //     }
+  //   });
 
   $("#myForm").submit(function (event) {
     event.preventDefault();
     var formData = {};
     var formElements = document.getElementById("myForm").elements;
 
+    var isInstructor = formElements[10].value === "Instructor";
+
     for (var i = 0; i < formElements.length; i++) {
       var element = formElements[i];
       var elementName = element.name;
       var elementValue = element.value;
 
-      if (elementName) {
+      if(elementName){
+      if(isInstructor && (elementName == "custom_district_thumb"  || elementName == "custom_domain_name" || elementName == "custom_domain_thumb"
+      || elementName == "is_trial_plan" || elementName == "custom_district_name" || elementName == "custom_district_plan"
+      || elementName == "custom_instructor_classlist" || elementName == "custom_user_role" || elementName == "launch_url"
+      || elementName == "custom_user_account_type") ){
         formData[elementName] = elementValue;
       }
+      else if (!isInstructor && (elementName == "lis_person_name_family" || elementName == "custom_effective_date" || elementName == "custom_due_date"
+      || elementName == "import_report_flow" || elementName == "lis_outcome_service_url" || elementName == "custom_assignment_author"
+      || elementName == "custom_assessment_id" ) ){
+         formData[elementName] = elementValue;
+      }
+
+      else if ((elementName != "lis_person_name_family")  && (elementName != "custom_effective_date") && (elementName != "custom_due_date")
+      && (elementName != "import_report_flow") && (elementName != "lis_outcome_service_url") && (elementName != "custom_assignment_author")
+      && (elementName != "custom_assessment_id") && (elementName != "custom_district_thumb")  && (elementName != "custom_domain_name") && (elementName != "custom_domain_thumb")
+      && (elementName != "is_trial_plan") && (elementName != "custom_district_name") && (elementName != "custom_district_plan")
+      && (elementName != "custom_instructor_classlist") && (elementName != "custom_user_role") && (elementName != "launch_url")
+      && (elementName != "custom_user_account_type") ){
+        formData[elementName] = elementValue;
+      }
+    
     }
+  }
 
     var url = "/";
 
