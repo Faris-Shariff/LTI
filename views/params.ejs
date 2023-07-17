@@ -3,10 +3,38 @@
 <head>
     <title>Parameter Values Form</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        input {
+            background-color: #eee;
+            opacity: 1;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
     <h1>Parameter Values Form</h1>
     <form id="submitForm" action="http://localhost:8080/oAuth" method="POST" class="border border-secondary p-4">
+            <div class="form-group">
+                <label for="lti_version">LTI Version:</label>
+                <input type="text" name="lti_version" id="lti_version" value="<%= params.find(p => p.key === 'lti_version').value %>" >
+            </div>
+            <div class="form-group">
+                <label for="launch_presentation_document_target">Launch Presentation Document Target:</label>
+                <input type="text" name="launch_presentation_document_target" id="launch_presentation_document_target" value="<%= params.find(p => p.key === 'launch_presentation_document_target').value %>" >
+            </div>
+            <div class="form-group">
+                <label for="tool_consumer_instance_guid">Tool Consumer Instance GUID:</label>
+                <input type="text" name="tool_consumer_instance_guid" id="tool_consumer_instance_guid" value="<%= params.find(p => p.key === 'tool_consumer_instance_guid').value %>" >
+            </div>
+            <div class="form-group">
+                <label for="tool_consumer_instance_name">Tool Consumer Instance Name:</label>
+                <input type="text" name="tool_consumer_instance_name" id="tool_consumer_instance_name" value="<%= params.find(p => p.key === 'tool_consumer_instance_name').value %>" >
+            </div>
+            <div class="form-group">
+                <label for="tool_consumer_info_product_family_code">Tool Consumer Info Product Family Code:</label>
+                <input type="text" name="tool_consumer_info_product_family_code" id="tool_consumer_info_product_family_code" value="<%= params.find(p => p.key === 'tool_consumer_info_product_family_code').value %>" >
+            </div>
             <div class="form-group">
                 <label for="context_id">Context ID:</label>
                 <input type="text" name="context_id" id="context_id" value="<%= params.find(p => p.key === 'context_id').value %>"  >
@@ -14,39 +42,7 @@
             <div class="form-group">
                 <label for="context_title">Context Title:</label>
                 <input type="text" name="context_title" id="context_title" value="<%= params.find(p => p.key === 'context_title').value %>" >
-            </div>
-            <div class="form-group">
-                <label for="custom_assignment_params">Custom Assignment Params:</label>
-                <input type="text" name="custom_assignment_params" id="custom_assignment_params" value="<%= params.find(p => p.key === 'custom_assignment_params').value %>" >
-            </div>
-            <div class="form-group">
-                <label for="custom_course_name">Custom Course Name:</label>
-                <input type="text" name="custom_course_name" id="custom_course_name" value="<%= params.find(p => p.key === 'custom_course_name').value %>" >
-            </div>
-            <div class="form-group">
-                <label for="custom_courseid">Custom Course ID:</label>
-                <input type="text" name="custom_courseid" id="custom_courseid" value="<%= params.find(p => p.key === 'custom_courseid').value %>" >
-            </div>
-            <div class="form-group">
-                <label for="custom_district_id">Custom District ID:</label>
-                <input type="text" name="custom_district_id" id="custom_district_id" value="<%= params.find(p => p.key === 'custom_district_id').value %>" >
-            </div>
-            <div class="form-group">
-                <label for="custom_domainid">Custom Domain ID:</label>
-                <input type="text" name="custom_domainid" id="custom_domainid" value="<%= params.find(p => p.key === 'custom_domainid').value %>" >
-            </div>
-            <div class="form-group">
-                <label for="custom_grade">Custom Grade:</label>
-                <input type="text" name="custom_grade" id="custom_grade" value="<%= params.find(p => p.key === 'custom_grade').value %>" >
-            </div>
-            <div class="form-group">
-                <label for="custom_subject">Custom Subject:</label>
-                <input type="text" name="custom_subject" id="custom_subject" value="<%= params.find(p => p.key === 'custom_subject').value %>" >
-            </div>
-            <div class="form-group">
-                <label for="launch_presentation_document_target">Launch Presentation Document Target:</label>
-                <input type="text" name="launch_presentation_document_target" id="launch_presentation_document_target" value="<%= params.find(p => p.key === 'launch_presentation_document_target').value %>" >
-            </div>
+            </div>        
             <div class="form-group">
                 <label for="launch_presentation_return_url">Launch Presentation Return URL:</label>
                 <input type="text" name="launch_presentation_return_url" id="launch_presentation_return_url" value="<%= params.find(p => p.key === 'launch_presentation_return_url').value %>" >
@@ -62,10 +58,6 @@
             <div class="form-group">
                 <label for="lti_message_type">LTI Message Type:</label>
                 <input type="text" name="lti_message_type" id="lti_message_type" value="<%= params.find(p => p.key === 'lti_message_type').value %>" >
-            </div>
-            <div class="form-group">
-                <label for="lti_version">LTI Version:</label>
-                <input type="text" name="lti_version" id="lti_version" value="<%= params.find(p => p.key === 'lti_version').value %>" >
             </div>
             <div class="form-group">
                 <label for="oauth_consumer_key">OAuth Consumer Key:</label>
@@ -92,22 +84,18 @@
                 <input type="text" name="roles" id="roles" value="<%= params.find(p => p.key === 'roles').value %>" >
             </div>
             <div class="form-group">
-                <label for="tool_consumer_info_product_family_code">Tool Consumer Info Product Family Code:</label>
-                <input type="text" name="tool_consumer_info_product_family_code" id="tool_consumer_info_product_family_code" value="<%= params.find(p => p.key === 'tool_consumer_info_product_family_code').value %>" >
-            </div>
-            <div class="form-group">
-                <label for="tool_consumer_instance_guid">Tool Consumer Instance GUID:</label>
-                <input type="text" name="tool_consumer_instance_guid" id="tool_consumer_instance_guid" value="<%= params.find(p => p.key === 'tool_consumer_instance_guid').value %>" >
-            </div>
-            <div class="form-group">
-                <label for="tool_consumer_instance_name">Tool Consumer Instance Name:</label>
-                <input type="text" name="tool_consumer_instance_name" id="tool_consumer_instance_name" value="<%= params.find(p => p.key === 'tool_consumer_instance_name').value %>" >
-            </div>
-            <div class="form-group">
                 <label for="user_id">User ID:</label>
                 <input type="text" name="user_id" id="user_id" value="<%= params.find(p => p.key === 'user_id').value %>" >
             </div>
             <% if ( params.find(p => p.key === 'roles').value === 'Instructor') { %>
+                <div class="form-group">
+                    <label for="custom_domainid">Custom Domain ID:</label>
+                    <input type="text" name="custom_domainid" id="custom_domainid" value="<%= params.find(p => p.key === 'custom_domainid').value %>" >
+                </div> 
+                <div class="form-group">
+                    <label for="custom_courseid">Custom Course ID:</label>
+                    <input type="text" name="custom_courseid" id="custom_courseid" value="<%= params.find(p => p.key === 'custom_courseid').value %>" >
+                </div>   
                 <div class="form-group">
                     <label for="custom_district_thumb">Custom District Thumbnail:</label>
                     <input type="text" name="custom_district_thumb" id="custom_district_thumb" value="<%= params.find(p => p.key === 'custom_district_thumb').value %>" >
@@ -149,33 +137,10 @@
                     <input type="text" name="custom_user_account_type" id="custom_user_account_type" value="<%= params.find(p => p.key === 'custom_user_account_type').value %>" >
                 </div>
                 <% } else { %>
-                <div class="form-group">
-                    <label for="lis_person_name_family">lis_person_name_family</label>
-                    <input type="text" name="lis_person_name_family" id="lis_person_name_family" value="<%= params.find(p => p.key === 'lis_person_name_family').value %>" >
-                </div>
-                <div class="form-group">
-                    <label for="custom_effective_date">custom_effective_date</label>
-                    <input type="text" id="custom_effective_date" name="custom_effective_date" value="<%= params.find(p => p.key === 'custom_effective_date').value %>" >
-                </div>
-                <div class="form-group">
-                    <label for="custom_due_date">custom_due_date</label>
-                    <input type="text" id="custom_due_date" name="custom_due_date" value="<%= params.find(p => p.key === 'custom_due_date').value %>" >
-                </div>
-                <div class="form-group">
-                    <label for="custom_assignment_author">custom_assignment_author</label>
-                    <input type="text" id="custom_assignment_author" name="custom_assignment_author" value="<%= params.find(p => p.key === 'custom_assignment_author').value %>" >
-                </div>
-                <div class="form-group">
-                    <label for="custom_assessment_id">custom_assessment_id</label>
-                    <input type="text" id="custom_assessment_id" name="custom_assessment_id" value="<%= params.find(p => p.key === 'custom_assessment_id').value %>" >
-                </div>
+                
                 <div class="form-group">
                     <label for="lis_outcome_service_url">lis_outcome_service_url</label>
                     <input type="text" id="lis_outcome_service_url" name="lis_outcome_service_url" value="<%= params.find(p => p.key === 'lis_outcome_service_url').value %>" >
-                </div>
-                <div class="form-group">
-                    <label for="import_report_flow">import_report_flow</label>
-                    <input type="text" id="import_report_flow" name="import_report_flow" value="<%= params.find(p => p.key === 'import_report_flow').value %>" >
                 </div>
             <% } %>
             <div class="form-group">
