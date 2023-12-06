@@ -6,7 +6,7 @@ OAuth = require("oauth");
 const morgan = require('morgan');
 const path = require('path');
 const axios = require('axios');
-const port = 8081
+const port = 8083
 
 app.use(bodyParser.json());
 // app.use(morgan('tiny'))
@@ -24,7 +24,7 @@ app.post('/oAuth', async (req, res) => {
       formData.append(key, req.body[key]);
     }
 
-    const response = await axios.post('http://localhost:8080/oAuth', formData.toString(), {
+    const response = await axios.post('http://localhost:8081/ltiLaunch', formData.toString(), {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
@@ -41,7 +41,7 @@ app.post('/', (req, res) => {
   var extraParams = req.body;
   var OAuth = require("oauth");
 
-  var oauthUrl = "http://localhost:8080/oAuth";
+  var oauthUrl = "https://learnuat.glider.ai/ltiLaunch";
   var resultObj = {};
 
   // resultObj["url"] = Meteor.settings.EdulasticHost[process.env.ENV].hostIP;
@@ -61,33 +61,34 @@ app.post('/', (req, res) => {
   var method = "post", url = oauthUrl;
 
   extraParams = {
-    context_id: 'uYwvxnvGKFnAxvSYo',
+  context_id: 'kC9fvFi6XfFXCJ8gQ',
   context_title: 'xc%20xc',
-  custom_assessment_id: '257078',
-  custom_assignment_author: 'GduqyQajsx3krzHap',
-  custom_assignment_params: '{"isProctored":false,"validTill":1689572049976,"allAttemptedQuestionIds":[]}',
-  custom_course_name: 'g4GZp8xa9rnbbQwbu_all_course',
-  custom_courseid: 'g4GZp8xa9rnbbQwbu_all',
-  custom_district_id: 'g4GZp8xa9rnbbQwbu',
-  custom_domainid: 'g4GZp8xa9rnbbQwbu',
-  custom_due_date: '1719566141901',
-  custom_effective_date: '1687943741901',
-  custom_grade: 'all',
-  custom_subject: 'all',
-  import_report_flow: 'IMPORT_FLOW',
-  launch_presentation_document_target: 'frame',
+  //custom_assessment_id: '253310',
+  //custom_assignment_author: 'GduqyQajsx3krzHap',
+  //custom_assignment_params: '{"isProctored":false,"validTill":1689572049976,"allAttemptedQuestionIds":[]}',
+  //custom_course_name: 'g4GZp8xa9rnbbQwbu_all_course',
+  //custom_courseid: 'g4GZp8xa9rnbbQwbu_all',
+  //custom_district_id: 'g4GZp8xa9rnbbQwbu',
+  //custom_domainid: 'g4GZp8xa9rnbbQwbu',
+  //custom_due_date: '1719566141901',
+  //custom_effective_date: '1687943741901',
+  //custom_grade: 'all',
+  //custom_subject: 'all',
+  //import_report_flow: 'IMPORT_FLOW',
+  launch_presentation_document_target: 'iframe',
   launch_presentation_return_url: 'http://glider.com/userProfile',
   lis_outcome_service_url: 'http://localhost:3000/api/update/assignment/result',
-  lis_person_contact_email_primary: 'jdb@bv.in',
-  lis_person_name_family: '%20',
-  lis_person_name_given: 'Fris',
-  lti_message_type: 'takeAssignment',
+  lis_person_contact_email_primary: 'shankaoauthtest123@glider.ai',
+  //lis_person_name_family: '%20',
+  lis_person_name_given: 'shankaoauthtest123',
+  lti_message_type: 'basic-lti-launch-request', //'takeAssignment',
   lti_version: 'LTI-1p0',
-  roles: 'Student',
-  tool_consumer_info_product_family_code: 'glider',
-  tool_consumer_instance_guid: 'com.gliderapp.snapwiz',
-  tool_consumer_instance_name: 'Edulastic',
-  user_id: '3f6viixLSHgB8tm6m'
+  roles: 'Learner',
+  tool_consumer_info_product_family_code: 'DoceboLearn', //'glider',
+  tool_consumer_instance_guid: 'intuitsandbox.docebosaas.com', //'com.gliderapp.snapwiz',
+  tool_consumer_instance_name: 'Intuit Inc.', //'Edulastic',
+  user_id: 'D4tNXndYtJXQi7ddz74D46'
+  //test_id: "kC9fvFi6XfFXCJ8gQ"
   }
   console.log({extraParams});
 
