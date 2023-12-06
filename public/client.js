@@ -62,7 +62,7 @@ $(document).ready(function () {
     var formData = {};
     var formElements = document.getElementById("myForm").elements;
 
-    var isInstructor = formElements.roles.value === "Instructor";
+    var isInstructor = formElements[10].value === "Instructor";
 
     for (var i = 0; i < formElements.length; i++) {
       var element = formElements[i];
@@ -73,7 +73,7 @@ $(document).ready(function () {
       if(isInstructor && (elementName == "custom_district_thumb"  || elementName == "custom_domain_name" || elementName == "custom_domain_thumb"
       || elementName == "is_trial_plan" || elementName == "custom_district_name" || elementName == "custom_district_plan"
       || elementName == "custom_instructor_classlist" || elementName == "custom_user_role" || elementName == "launch_url"
-      || elementName == "custom_user_account_type" || elementName == "custom_domainid" || elementName == "custom_courseid") ){
+      || elementName == "custom_user_account_type") ){
         formData[elementName] = elementValue;
       }
       else if (!isInstructor && (elementName == "lis_person_name_family" || elementName == "custom_effective_date" || elementName == "custom_due_date"
@@ -87,7 +87,7 @@ $(document).ready(function () {
       && (elementName != "custom_assessment_id") && (elementName != "custom_district_thumb")  && (elementName != "custom_domain_name") && (elementName != "custom_domain_thumb")
       && (elementName != "is_trial_plan") && (elementName != "custom_district_name") && (elementName != "custom_district_plan")
       && (elementName != "custom_instructor_classlist") && (elementName != "custom_user_role") && (elementName != "launch_url")
-      && (elementName != "custom_user_account_type" && elementName != "custom_domainid" && elementName != "custom_courseid") ){
+      && (elementName != "custom_user_account_type") ){
         formData[elementName] = elementValue;
       }
     
